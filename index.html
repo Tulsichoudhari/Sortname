@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>Name Sort App</title>
+	<style>
+	*{font-size:40px;}
+	body{
+	background-color:#bf2a3b;
+	}
+	.btn{
+	background-color:#9ee6e4;
+	width:30%;
+	border-radius:30px;
+	color:azure;
+	}
+	</style>
+	<script>
+		function getname()
+		{
+			event.preventDefault();
+			let ans=document.getElementById("ans");
+			let name=document.getElementById("name");
+
+			if (name.value=="")
+			{
+				alert("name should not be empty");
+				ans.innerHTML="";
+				name.focus();
+				return;
+			}
+			if (name.value.trim()=="")
+			{
+				alert("name cannot contain only spaces");
+				ans.innerHTML="";
+				name.value="";
+				name.focus();
+				return;
+			}
+			if (name.value.trim().length < 2)
+			{
+				alert("name should be atleast 2 letters");
+				ans.innerHTML="";
+				name.value="";
+				name.focus();
+				return;
+			}
+			name = name.value.split("").sort().join("");
+			ans.innerHTML=name;
+		}
+	</script>
+</head>
+<body>
+<center>
+	<h1>Sort My Name App</h1>
+	<form onsubmit="getname()">
+	<input type="text" placeholder="Enter ur name" id="name"/>
+	<br/><br/>
+	<input type="submit"  class="btn"/>
+	</form>
+	<h2 id="ans"/>
+</center>
+</body>
+</html>
